@@ -38,7 +38,16 @@ Proportionality is a rule, not a suggestion: a one-line typo fix stays two sente
 
 **Requirements:** a recent Claude Code (skills with `allowed-tools` and `${CLAUDE_SKILL_DIR}` substitution), `bash` available (macOS/Linux; on Windows use Git Bash — the repo snapshot is a bash script).
 
-### Option A — personal skill (available in every repo) — recommended
+### Quickest — with the `skills` CLI
+
+```bash
+npx skills add tahabozdemir/promptify -g        # personal: every repo (~/.claude/skills/promptify)
+npx skills add tahabozdemir/promptify           # project: this repo only (.claude/skills/promptify)
+```
+
+Add `-a claude-code` to target Claude Code only, `-y` to skip the confirmation. The CLI symlinks by default; pass `--copy` for an independent copy (use that for project installs you want to commit).
+
+### Option A — personal skill, by hand
 
 ```bash
 git clone https://github.com/tahabozdemir/promptify.git ~/promptify
@@ -52,7 +61,7 @@ mkdir -p ~/.claude/skills
 git clone https://github.com/tahabozdemir/promptify.git ~/.claude/skills/promptify
 ```
 
-### Option B — project skill (this repo only)
+### Option B — project skill, by hand
 
 ```bash
 mkdir -p .claude/skills
