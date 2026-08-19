@@ -3,6 +3,8 @@ name: promptify
 description: Rewrite a rough, vague, or bloated prompt into a best-practices prompt for the Claude model in use, grounded in the current repo (real file paths, existing patterns, the test/build command that proves the change, CLAUDE.md conventions). Use when the user says "upgrade/improve/optimize/rewrite my prompt", "make this a better prompt", "how should I ask for this", "promptify", or pastes a task and wants it phrased properly before running it. Produces the prompt; runs it only with --run.
 argument-hint: "[--run] [--model <name>] <raw prompt>"
 license: MIT
+metadata:
+  version: 1.0.0
 allowed-tools: Read, Grep, Glob, Bash(${CLAUDE_SKILL_DIR}/scripts/snapshot.sh), Bash(${CLAUDE_SKILL_DIR}/scripts/snapshot.sh *), Bash(git *)
 ---
 

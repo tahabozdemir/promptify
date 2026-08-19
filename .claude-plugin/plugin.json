@@ -1,0 +1,13 @@
+{
+  "name": "promptify",
+  "version": "1.0.0",
+  "description": "Rewrite a rough prompt into a best-practices prompt for the Claude model in use, grounded in the current repo: real file paths, the existing pattern to copy, the test/build command that proves the change, CLAUDE.md conventions.",
+  "author": {
+    "name": "Taha Bozdemir",
+    "url": "https://github.com/tahabozdemir"
+  },
+  "homepage": "https://github.com/tahabozdemir/promptify",
+  "repository": "https://github.com/tahabozdemir/promptify",
+  "license": "MIT",
+  "keywords": ["prompt-engineering", "prompting", "best-practices", "claude-code", "skill", "fable-5", "opus-5", "sonnet-5"]
+}

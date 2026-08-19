@@ -47,6 +47,19 @@ npx skills add tahabozdemir/promptify           # project: this repo only (.clau
 
 Add `-a claude-code` to target Claude Code only, `-y` to skip the confirmation. The CLI symlinks by default; pass `--copy` for an independent copy (use that for project installs you want to commit).
 
+### As a Claude Code plugin
+
+```
+/plugin marketplace add tahabozdemir/promptify
+/plugin install promptify@promptify
+```
+
+Plugins update in place when a new version is published (`/plugin marketplace update`).
+
+### Cursor and other agents
+
+Cursor: *Settings → Rules → Add Rule → Remote Rule (GitHub)* and paste `https://github.com/tahabozdemir/promptify`. Any agent that follows the [Agent Skills](https://agentskills.io) spec can load the root `SKILL.md`; the `skills` CLI above installs for every agent it detects unless you pass `-a`.
+
 ### Option A — personal skill, by hand
 
 ```bash
@@ -107,11 +120,14 @@ Claude can also invoke it on its own when you say things like *"make this a bett
 ```
 SKILL.md                      workflow + always-on rules (this is what loads into context)
 scripts/snapshot.sh           read-only repo snapshot, injected before the skill runs
+scripts/validate.sh           pre-PR checks (frontmatter, references, snapshot in 3 envs, plugin manifests)
 references/principles.md      general techniques + Anthropic's tested snippets + a "what to strip and why" table
 references/model-notes.md     per-model add/remove lists: Fable 5 / Mythos 5, Opus 5, Sonnet 5, Opus 4.8–4.6, Haiku 4.5, Claude Code harness
 references/repo-grounding.md  what to dig out of the repo per task type, and how to find it cheaply
 references/examples.md        eight before→after pairs (tiny fix … overnight run … system prompt)
 templates/prompt-template.md  three prompt shapes by size
+.claude-plugin/               plugin.json + marketplace.json, so it installs as a Claude Code plugin too
+CONTRIBUTING.md               layout rules, what to contribute, how to validate
 ```
 
 Only `SKILL.md` is loaded when the skill runs; the references are read on demand, so they cost nothing until needed.
@@ -135,13 +151,7 @@ Model guidance changes with each release: when a new model page appears, add a s
 
 ## Contributing
 
-Issues and pull requests are welcome. The most useful contributions:
-
-- **A new model** — add a section to `references/model-notes.md` with its *Add* / *Remove* lists, citing the model's prompting page.
-- **A better example** — add a before→after pair to `references/examples.md`; examples steer the output more reliably than rules.
-- **A grounding trick** — add it to `references/repo-grounding.md` (how to find the pattern/test command cheaply for another ecosystem).
-
-Keep `SKILL.md` short: it is the only file that stays in context, so reference material belongs in `references/`. Run `bash scripts/snapshot.sh; echo exit=$?` in a git repo and a non-git folder before opening a PR — it must exit 0 in both.
+Issues and PRs welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for the layout rules and the most useful kinds of contribution (a new model section, a better before→after example, a grounding trick for another ecosystem). Run `bash scripts/validate.sh` before opening a PR.
 
 ## License
 
