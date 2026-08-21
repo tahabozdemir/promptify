@@ -108,7 +108,7 @@ Claude can also invoke it on its own when you say things like *"make this a bett
 
 **What you get back, always in this order:**
 
-1. The upgraded prompt in a single fenced block — copy-paste ready.
+1. The upgraded prompt in a single fenced block — copy-paste ready. The whole reply is in English, including the notes below it, even when you asked in another language (it quotes English paths, commands, and conventions, and travels between tools and teammates).
 2. **Grounded in** — the repo facts it used (paths, commands, conventions), so you can sanity-check them.
 3. **Assumptions** — at most three, only if they'd change the work (omitted when there are none).
 4. "Say **run it** to execute this prompt as written." — reply `run it` and Claude runs it.
@@ -124,7 +124,7 @@ scripts/validate.sh           pre-PR checks (frontmatter, references, snapshot i
 references/principles.md      general techniques + Anthropic's tested snippets + a "what to strip and why" table
 references/model-notes.md     per-model add/remove lists: Fable 5 / Mythos 5, Opus 5, Sonnet 5, Opus 4.8–4.6, Haiku 4.5, Claude Code harness
 references/repo-grounding.md  what to dig out of the repo per task type, and how to find it cheaply
-references/examples.md        eight before→after pairs (tiny fix … overnight run … system prompt)
+references/examples.md        nine before→after pairs (tiny fix … overnight run … system prompt … non-English input)
 templates/prompt-template.md  three prompt shapes by size
 .claude-plugin/               plugin.json + marketplace.json, so it installs as a Claude Code plugin too
 CONTRIBUTING.md               layout rules, what to contribute, how to validate

@@ -180,3 +180,21 @@ Assistant: [calls search_kb("refund webhook")] I don't find refund webhooks in o
 ```
 
 Removed: the caps-lock commands (over-trigger), "show your reasoning" (reasoning-echo instruction), the unconditional "always search first" (replaced with a reason and a boundary). Added: role, reasons, tool policy, two diverse examples, a concision reminder near the end for Opus 5.
+
+---
+
+## 9. Raw prompt in another language — the upgraded prompt comes back in English
+
+**Before**
+```text
+kullanıcı silme akışında bir onay adımı olsun
+```
+
+**After** (Grounded in: `src/users/deleteUser.ts` performs the delete; `src/ui/ConfirmDialog.tsx` is the existing confirm pattern; `npm run test -- src/users` covers the flow.)
+```text
+Deleting a user is irreversible, so the flow should ask for confirmation first. Add a confirmation step to the delete path in src/users/deleteUser.ts, using the existing ConfirmDialog in src/ui/ConfirmDialog.tsx rather than a new component. Keep the change to the delete flow; other destructive actions stay as they are.
+
+Run `npm run test -- src/users` and paste the result.
+```
+
+The reply is English throughout — the prompt because it quotes English paths and commands and gets pasted into tools and shared, and the **Grounded in**, **Assumptions**, and closing line with it — even though the raw prompt was Turkish.

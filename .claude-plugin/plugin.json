@@ -1,6 +1,6 @@
 {
   "name": "promptify",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Rewrite a rough prompt into a best-practices prompt for the Claude model in use, grounded in the current repo: real file paths, the existing pattern to copy, the test/build command that proves the change, CLAUDE.md conventions.",
   "author": {
     "name": "Taha Bozdemir",
