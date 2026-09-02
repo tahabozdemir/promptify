@@ -10,7 +10,7 @@
       "name": "promptify",
       "source": "./",
       "description": "Rewrite a rough prompt into a best-practices prompt for the Claude model in use, grounded in the current repo (real paths, existing patterns, the command that proves the change, CLAUDE.md conventions). Produces the prompt; runs it only with --run.",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "author": { "name": "Taha Bozdemir", "url": "https://github.com/tahabozdemir" },
       "homepage": "https://github.com/tahabozdemir/promptify",
       "repository": "https://github.com/tahabozdemir/promptify",

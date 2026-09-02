@@ -1,6 +1,6 @@
 # Prompting principles for current Claude models
 
-Condensed from Anthropic's [Prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices) (applies to Fable 5, Mythos 5, Opus 5, Opus 4.8/4.7/4.6, Sonnet 5/4.6, Haiku 4.5). Use this as the checklist when rewriting; the model-specific deltas are in `model-notes.md`. Snippets in code blocks are Anthropic's tested wording — reuse them when the situation calls for it, and prefer a short paraphrase when the full block would dwarf the task.
+Condensed from Anthropic's [Prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices) (applies to Fable 5.1/5, Mythos 5.1/5, Opus 5, Opus 4.8/4.7/4.6, Sonnet 5/4.6, Haiku 4.5). Use this as the checklist when rewriting; the model-specific deltas are in `model-notes.md`. Snippets in code blocks are Anthropic's tested wording — reuse them when the situation calls for it, and prefer a short paraphrase when the full block would dwarf the task.
 
 ## 1. Clear and direct
 
@@ -91,13 +91,13 @@ If you intend to call multiple tools and there are no dependencies between the t
 
 ## 9. Thinking
 
-- Adaptive thinking is on for 4.6+ (always on for Fable 5 / Mythos 5; on by default for Opus 5 and Sonnet 5). `effort` is the depth control; `budget_tokens` is gone from 4.7 on.
+- Adaptive thinking is on for 4.6+ (always on for Fable 5.1/5 and Mythos 5.1/5; on by default for Opus 5 and Sonnet 5). `effort` is the depth control; `budget_tokens` is gone from 4.7 on.
 - **Prefer general instructions over prescriptive steps.** "Think thoroughly about X" beats a hand-written step plan; the model's own reasoning usually exceeds what a human would script.
 - Reflection after tools: *"After receiving tool results, carefully reflect on their quality and determine optimal next steps before proceeding."*
 - To reduce overthinking: *"When you're deciding how to approach a problem, choose an approach and commit to it. Avoid revisiting decisions unless you encounter new information that directly contradicts your reasoning."*
 - To reduce thinking frequency under big system prompts: *"Thinking adds latency and should only be used when it will meaningfully improve answer quality, typically for problems that require multistep reasoning. When in doubt, respond directly."*
 - Self-check ("Before you finish, verify your answer against [criteria]") helps on most models — **except Opus 5**, which already verifies; there, remove such lines (see `model-notes.md`).
-- **Never ask the model to echo or transcribe its internal reasoning in the response** — on Fable 5 this can trigger the `reasoning_extraction` refusal. Ask for conclusions and evidence, not reasoning transcripts.
+- **Never ask the model to echo or transcribe its internal reasoning in the response** — on Fable 5 and 5.1 this can trigger the `reasoning_extraction` refusal. Ask for conclusions and evidence, not reasoning transcripts.
 
 ## 10. Agentic coding
 
@@ -160,7 +160,7 @@ Frontend: models converge on an "AI slop" aesthetic. Either specify a concrete v
 | ALL CAPS / "CRITICAL" / "YOU MUST" | Plain sentence with the reason | Current models over-trigger on emphasis; one clear instruction suffices |
 | "be thorough", "explore everything", "if in doubt, use X" | Targeted: "use X when it would improve understanding of Y" | Over-exploration and tool over-triggering |
 | "double-check", "verify again", "use a subagent to verify" | Name the concrete check once (test/build), or nothing on Opus 5 | Over-verification; Opus 5 already verifies |
-| "think step by step and show your reasoning" | "Think carefully about X" / ask for conclusions + evidence | Prescriptive steps underperform; reasoning echo can trip Fable 5 refusals |
+| "think step by step and show your reasoning" | "Think carefully about X" / ask for conclusions + evidence | Prescriptive steps underperform; reasoning echo can trip Fable 5 / 5.1 refusals |
 | "don't do X" with no reason | "do Y" or "don't do X because Z" | Positive framing and reasons generalize |
 | "can you suggest…" when changes are wanted | "change/implement/add…" | Literal instruction following |
 | "fix it" / "make it better" with no check | Symptom + location + what fixed looks like + the command that proves it | Without a check the user is the verification loop |
