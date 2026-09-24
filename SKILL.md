@@ -4,7 +4,7 @@ description: Rewrite a rough, vague, or bloated prompt into a best-practices pro
 argument-hint: "[--run] [--model <name>] <raw prompt>"
 license: MIT
 metadata:
-  version: 1.2.0
+  version: 1.3.0
 allowed-tools: Read, Grep, Glob, Bash(${CLAUDE_SKILL_DIR}/scripts/snapshot.sh), Bash(${CLAUDE_SKILL_DIR}/scripts/snapshot.sh *), Bash(git *)
 ---
 
@@ -52,7 +52,7 @@ Collected automatically before you start (session effort: `${CLAUDE_EFFORT}`):
 
 - **Preserve intent.** Add context, structure, and verification; do not change what is being asked, narrow it, or widen it. If the raw prompt looks mistaken (wrong file, impossible ask, a question phrased as a command), keep its intent and surface the doubt under Assumptions.
 - **Write the whole reply in English.** The prompt quotes paths, commands, and conventions that are already in English and gets pasted into tools or shared with teammates, so the prompt and the notes around it — Grounded in, Assumptions, the closing line — all stay in English even when the raw prompt and the conversation are in another language.
-- **Write for the model in use.** Current Claude models follow a brief instruction as well as an enumerated list, so one clear sentence with its reason beats a checklist of behaviors. Do not add all-caps emphasis ("CRITICAL", "YOU MUST"), "be thorough", "double-check your work", "verify with a subagent", "show your reasoning", or hand-written think-step-by-step scripts: on current models these over-trigger, cost tokens, or in the case of reasoning-echo instructions can trip a refusal on Fable 5 and 5.1. The per-model deltas live in `references/model-notes.md`.
+- **Write for the model in use.** Current Claude models follow a brief instruction as well as an enumerated list, so one clear sentence with its reason beats a checklist of behaviors. Do not add all-caps emphasis ("CRITICAL", "YOU MUST"), "be thorough", "double-check your work", "verify with a subagent", "show your reasoning", or hand-written think-step-by-step scripts: on current models these over-trigger, cost tokens, or in the case of reasoning-echo instructions can trip a refusal on Fable 5, Fable 5.1, and Opus 5.5. The per-model deltas live in `references/model-notes.md`.
 - **Positive over negative.** Say what to do rather than what to avoid; when a prohibition is needed, give the reason so the model can generalize.
 - **Give the reason, not only the request.** One sentence on why, or for whom, whenever it is not obvious. Claude connects the task to the right context instead of guessing at intent.
 - **Make it verifiable.** Every change-type prompt names a check Claude can run and asks for the evidence (test output, build exit code, screenshot) rather than a claim of success. Without a check, the user becomes the verification loop.

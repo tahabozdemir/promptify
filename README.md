@@ -29,7 +29,7 @@ Vague prompts produce mediocre, hard-to-verify work, and Anthropic's prompting g
 1. **Reads your raw prompt** — whatever you'd have typed anyway.
 2. **Snapshots the repo** automatically (git branch and state, top-level layout, manifests, npm scripts, test directories, whether CLAUDE.md / AGENTS.md / project agents / skills exist).
 3. **Grounds the prompt in real code** — a handful of targeted reads and greps to find the files actually involved, an existing pattern worth copying, and the test/build/lint command that proves the change. It never invents a path; anything unconfirmed is phrased as something to discover.
-4. **Rewrites** according to Anthropic's current guidance for the model in use (Fable 5.1 / Mythos 5.1, Fable 5 / Mythos 5, Opus 5, Sonnet 5, Opus 4.x, Haiku 4.5): direct action verbs, the reason behind the request, explicit scope and out-of-scope, a verifiable check, positive framing, proportional length — and it strips the things that hurt on current models (ALL-CAPS "MUST", "be thorough", "double-check", "show your reasoning", step-by-step thinking scripts).
+4. **Rewrites** according to Anthropic's current guidance for the model in use (Fable 5.1 / Mythos 5.1, Fable 5 / Mythos 5, Opus 5.5, Opus 5, Sonnet 5, Opus 4.x, Haiku 4.5): direct action verbs, the reason behind the request, explicit scope and out-of-scope, a verifiable check, positive framing, proportional length — and it strips the things that hurt on current models (ALL-CAPS "MUST", "be thorough", "double-check", "show your reasoning", step-by-step thinking scripts).
 5. **Presents** the result: the prompt in a code block, **Grounded in** (2–5 bullets), **Assumptions** (≤3, only ones that would change the work), and "Say **run it** to execute". It doesn't change any files or run the task unless you pass `--run`.
 
 Proportionality is a rule, not a suggestion: a one-line typo fix stays two sentences; an overnight autonomous build gets the full `<context>/<task>/<scope>/<verification>/<output>` template.
@@ -122,7 +122,7 @@ SKILL.md                      workflow + always-on rules (this is what loads int
 scripts/snapshot.sh           read-only repo snapshot, injected before the skill runs
 scripts/validate.sh           pre-PR checks (frontmatter, references, snapshot in 3 envs, plugin manifests)
 references/principles.md      general techniques + Anthropic's tested snippets + a "what to strip and why" table
-references/model-notes.md     per-model add/remove lists: Fable 5.1 / Mythos 5.1, Fable 5 / Mythos 5, Opus 5, Sonnet 5, Opus 4.8–4.6, Haiku 4.5, Claude Code harness
+references/model-notes.md     per-model add/remove lists: Fable 5.1 / Mythos 5.1, Fable 5 / Mythos 5, Opus 5.5, Opus 5, Sonnet 5, Opus 4.8–4.6, Haiku 4.5, Claude Code harness
 references/repo-grounding.md  what to dig out of the repo per task type, and how to find it cheaply
 references/examples.md        nine before→after pairs (tiny fix … overnight run … system prompt … non-English input)
 templates/prompt-template.md  three prompt shapes by size
@@ -144,6 +144,7 @@ Only `SKILL.md` is loaded when the skill runs; the references are read on demand
 - [Prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices) — techniques for all current models
 - [Prompting Claude Fable 5.1](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1)
 - [Prompting Claude Fable 5](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5)
+- [Prompting Claude Opus 5.5](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5)
 - [Prompting Claude Opus 5](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5)
 - [Prompting Claude Sonnet 5](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5)
 - [Claude Code best practices](https://code.claude.com/docs/en/best-practices) and the [skills reference](https://code.claude.com/docs/en/skills)
