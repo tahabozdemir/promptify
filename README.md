@@ -2,7 +2,7 @@
 
 Turn a rough prompt into the prompt an expert on *your* codebase would have written, for the Claude model you're actually running.
 
-![promptify: rough prompt in, repo-grounded expert prompt out](assets/promptify-how-it-works.png)
+![promptify: rough prompt in, repo-grounded expert prompt out](assets/promptify-how-it-works.webp)
 
 ```
 /promptify login is broken after a while, fix it
