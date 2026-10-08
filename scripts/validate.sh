@@ -44,7 +44,14 @@ rm -rf "$tmp"
 
 if command -v claude >/dev/null 2>&1; then
   echo "claude plugin validate"
-  claude plugin validate . --strict >/dev/null 2>&1 && ok "marketplace manifest (strict)" || err "claude plugin validate . --strict"
+  # The root CLAUDE.md is contributor-only on purpose, so the validator's "not loaded as project
+  # context" warning about it is accepted; any other warning or error still fails.
+  out="$(claude plugin validate . --strict 2>&1)" && ok "marketplace manifest (strict)" || {
+    other="$(printf '%s\n' "$out" | grep '❯' | grep -v 'CLAUDE.md at the plugin root is not loaded')"
+    [ -z "$other" ] && claude plugin validate . >/dev/null 2>&1 \
+      && ok "marketplace manifest (strict; contributor CLAUDE.md warning accepted)" \
+      || err "claude plugin validate . --strict"
+  }
   c="$(mktemp -d)"; cp -R .claude-plugin SKILL.md scripts references templates "$c"/ && rm -f "$c/.claude-plugin/marketplace.json"
   claude plugin validate "$c" --strict >/dev/null 2>&1 && ok "plugin manifest + skill (strict)" || err "plugin manifest validation"
   rm -rf "$c"
