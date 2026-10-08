@@ -163,3 +163,5 @@ Issues and PRs welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for the layout
 ## License
 
 [MIT](LICENSE) © 2026 Taha Bozdemir
+
+promptify is an independent project and is not affiliated with or endorsed by Anthropic.
