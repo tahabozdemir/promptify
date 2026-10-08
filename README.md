@@ -1,5 +1,8 @@
 # promptify — a Claude Code skill
 
+[![CI](https://github.com/tahabozdemir/promptify/actions/workflows/ci.yml/badge.svg)](https://github.com/tahabozdemir/promptify/actions/workflows/ci.yml)
+[![license](https://img.shields.io/github/license/tahabozdemir/promptify)](LICENSE)
+
 Turn a rough prompt into the prompt an expert on *your* codebase would have written, for the Claude model you're actually running.
 
 ![promptify: rough prompt in, repo-grounded expert prompt out](assets/promptify-how-it-works.webp)
@@ -131,6 +134,7 @@ templates/prompt-template.md  three prompt shapes by size
 .claude-plugin/               plugin.json + marketplace.json, so it installs as a Claude Code plugin too
 CONTRIBUTING.md               layout rules, what to contribute, how to validate
 assets/                       the README explainer image
+.github/workflows/ci.yml      runs validate.sh on every push and PR (Linux + macOS)
 ```
 
 Only `SKILL.md` is loaded when the skill runs; the references are read on demand, so they cost nothing until needed.
