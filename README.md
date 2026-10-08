@@ -2,6 +2,8 @@
 
 Turn a rough prompt into the prompt an expert on *your* codebase would have written, for the Claude model you're actually running.
 
+![promptify: rough prompt in, repo-grounded expert prompt out](assets/promptify-how-it-works.png)
+
 ```
 /promptify login is broken after a while, fix it
 ```
@@ -128,6 +130,7 @@ references/examples.md        nine before→after pairs (tiny fix … overnight 
 templates/prompt-template.md  three prompt shapes by size
 .claude-plugin/               plugin.json + marketplace.json, so it installs as a Claude Code plugin too
 CONTRIBUTING.md               layout rules, what to contribute, how to validate
+assets/                       the README explainer image
 ```
 
 Only `SKILL.md` is loaded when the skill runs; the references are read on demand, so they cost nothing until needed.
